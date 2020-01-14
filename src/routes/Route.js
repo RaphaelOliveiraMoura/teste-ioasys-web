@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Header from '~/components/Header';
+import { store } from '~/store';
 
 function RouteWrapper({ component: Component, isPrivate = false, ...rest }) {
-  const { signed } = { signed: false };
+  const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
@@ -15,12 +15,7 @@ function RouteWrapper({ component: Component, isPrivate = false, ...rest }) {
     return <Redirect to="/home" />;
   }
 
-  return (
-    <>
-      {signed && <Header />}
-      <Route render={props => <Component {...props} />} {...rest} />
-    </>
-  );
+  return <Route render={props => <Component {...props} />} {...rest} />;
 }
 
 RouteWrapper.propTypes = {

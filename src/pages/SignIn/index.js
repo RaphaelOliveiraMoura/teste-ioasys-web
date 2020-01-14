@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiUnlock, FiMail } from 'react-icons/fi';
-import { toast } from 'react-toastify';
 
 import Input from '~/components/Input';
 import Loader from '~/components/Loader';
@@ -9,30 +9,20 @@ import { Container } from './styles';
 
 import logoIoasys from '~/assets/logo-ioasys-pink.png';
 
-import api from '~/services/api';
+import { singInRequest } from '~/store/modules/auth/actions';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector(state => state.auth.loading);
+
+  const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      const response = await api.post('/users/auth/sign_in', {
-        email,
-        password,
-      });
-
-      console.log(response.data);
-    } catch (error) {
-      toast.error('Erro na autenticação, verifique suas credenciais');
-    } finally {
-      setLoading(false);
-    }
+    dispatch(singInRequest(email, password));
   }
 
   return (
