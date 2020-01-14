@@ -27,6 +27,11 @@ export const Container = styled.div`
     svg:first-of-type {
       position: absolute;
       left: 16px;
+      transition: all 0.6s;
+
+      &:hover {
+        transform: rotate(180deg);
+      }
     }
 
     svg:last-of-type {

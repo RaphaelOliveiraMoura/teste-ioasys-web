@@ -39,7 +39,7 @@ export const Container = styled.div`
       }
 
       button {
-        background: #57bbbc;
+        background: #ef5781;
         color: #fff;
         font-weight: bold;
         height: 46px;
