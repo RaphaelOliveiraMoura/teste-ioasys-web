@@ -6,11 +6,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ebe9d7;
+  background: #ef5781;
 
   .card {
     max-width: 450px;
-    background: #fffd;
+    background: #fff;
     border: 1px solid #ddd;
     padding: 26px;
     border-radius: 8px;

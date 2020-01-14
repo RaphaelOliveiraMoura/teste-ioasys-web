@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiUnlock, FiMail } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
@@ -7,7 +7,7 @@ import Loader from '~/components/Loader';
 
 import { Container } from './styles';
 
-import logoIoasys from '~/assets/logo-ioasys.png';
+import logoIoasys from '~/assets/logo-ioasys-pink.png';
 
 import api from '~/services/api';
 

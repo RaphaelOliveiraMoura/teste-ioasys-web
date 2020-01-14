@@ -19,15 +19,15 @@ export const Container = styled.div`
 
   .loader {
     background: #fff;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-      width: 200px;
+      width: 180px;
       animation: rotation 2s infinite;
 
       @keyframes rotation {

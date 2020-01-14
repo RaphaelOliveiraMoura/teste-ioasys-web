@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '~/components/Header';
 
 function RouteWrapper({ component: Component, isPrivate = false, ...rest }) {
-  const { signed } = false;
+  const { signed } = { signed: true };
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
