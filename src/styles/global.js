@@ -40,4 +40,9 @@ export default createGlobalStyle`
     background: none;
     border: 0;
   }
+
+  input {
+    border: none;
+  }
+
 `;
