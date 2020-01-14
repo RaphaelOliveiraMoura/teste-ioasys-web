@@ -11,6 +11,12 @@ export const Container = styled.div`
     padding: 26px;
     border-radius: 8px;
     display: flex;
+    transition: all 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+    }
 
     .logo {
       max-height: 80px;
@@ -49,6 +55,24 @@ export const Container = styled.div`
       p {
         color: #8d8c8c;
         font-size: 12px;
+      }
+    }
+  }
+
+  .reload {
+    width: 100%;
+    display: flex;
+    min-height: 300px;
+    grid-column: 1 / 3;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        transform: rotate(340deg);
       }
     }
   }
