@@ -1,5 +1,7 @@
 import produce from 'immer';
 
+import history from '~/services/history';
+
 export const INITIAL_STATE = {
   oAuth: null,
   signed: false,
@@ -29,6 +31,7 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = false;
         draft.oAuth = null;
         draft.signed = false;
+        history.push('/');
         break;
       }
       case '@auth/UNSET_LOADING': {
