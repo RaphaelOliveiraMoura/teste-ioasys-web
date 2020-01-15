@@ -45,14 +45,17 @@ export default function EnterpriseInfo({ match }) {
   return (
     <>
       <Header reversable />
-      <Container isLoading={loading}>
-        <img src={logoEnterprise} alt={enterprise.enterprise_name} />
-        <h1>{enterprise.enterprise_name}</h1>
-        <p>{enterprise.description}</p>
-        {enterprise.city && enterprise.country && (
-          <span>{`${enterprise.city}, ${enterprise.country}`}</span>
-        )}
-      </Container>
+      {enterprise.enterprise_name && (
+        <Container isLoading={loading}>
+          <div className="card">
+            <img src={logoEnterprise} alt={enterprise.enterprise_name} />
+            <h1>{enterprise.enterprise_name}</h1>
+            <p>{enterprise.description}</p>
+            <span>{`${enterprise.city}, ${enterprise.country}`}</span>
+          </div>
+        </Container>
+      )}
+
       <Loader loading={loading} />
     </>
   );
