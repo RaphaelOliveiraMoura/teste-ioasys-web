@@ -12,9 +12,9 @@ A aplicação consiste em uma interface integrada a uma [API](https://empresas.i
 
 O sistema conta com uma etapa de autenticação construida utilizando a arquitetura **oAuth**, além de fazer a listagem, filtro e detalhamento de empresas.
 
-## API Gateway 🔗
+## API Connector 🔗
 
-Além da aplicação frontend desenvolvida em **ReactJs**, foi criada um outro componente que funciona como um **Gatewey/Ponte** entre o frontend desenvolvido, e a api da ioasys.
+Além da aplicação frontend desenvolvida em **ReactJs**, foi criada um outro componente que funciona como um **Conector/Ponte** entre o frontend desenvolvido, e a api da ioasys.
 
 ### Motivo de desenvolvimento ❓
 
@@ -24,9 +24,9 @@ Desse modo desenvolvi uma API que recebe requisições para as **mesmas rotas** 
 
 ## Instabilidades na API 🛡️
 
-Durante o desenvolvimento do projeto, reparei que ao realizar requisições para a API da ioasys, frequentemente ocorria TIMEOUT, tanto em testes realizados pelo Postman, como pelo componente gateway desenvolvido.
+Durante o desenvolvimento do projeto, reparei que ao realizar requisições para a API da ioasys, frequentemente ocorria TIMEOUT, tanto em testes realizados pelo Postman, como pelo componente connector desenvolvido.
 
-Algumas requisições ocorriam sem problema algum, porém outras retornavam timeout. Logo optei por implementar um módulo/funcionalidade no componente gateway para sempre que recebesse TIMEOUT como resposta da API, ele continuasse persistindo/retentando realizar a requisição novamente. Desse modo a aplicação fica mais estável sem respostas de erros inesperadas. Porém em contraponto ocorre ocasiões da requisição demorar um tempo consideravél para retornar os dados, pelo fato de sempre ficar reenviando a requisição quando recebe TIMEOUT.
+Algumas requisições ocorriam sem problema algum, porém outras retornavam timeout. Logo optei por implementar um módulo/funcionalidade no componente connector para sempre que recebesse TIMEOUT como resposta da API, ele continuasse persistindo/re-tentando realizar a requisição novamente. Desse modo a aplicação fica mais estável sem respostas de erros inesperadas. Porém em contraponto ocorre ocasiões da requisição demorar um tempo consideravél para retornar os dados, pelo fato de sempre ficar reenviando a requisição quando recebe TIMEOUT.
 
 ## Executando a aplicação 🚀
 
@@ -57,11 +57,11 @@ Algumas requisições ocorriam sem problema algum, porém outras retornavam time
 
 Nesse projeto só foi utilizado a variável `REACT_APP_API_URL` que representa a URL da API que ele irá se comunicar.
 
-Para essa variável pode-se colocar diretamente a URL da API da ioasys (https://empresas.ioasys.com.br/api/v1) porém é recomendado utilizar a URL do **componente gateway**.
+Em teoria, essa variável iria conter a URL da API da ioasys (https://empresas.ioasys.com.br/api/v1) porém pelo fato do CORS bloquear as requisições é necessário utilizar a URL do **componente connector**.
 
-### Executando o API Gateway
+### Executando o API Connector
 
-O componente gateway se encontra nesse [repositório](https://github.com/RaphaelOliveiraMoura/teste-ioasys-api-gatwey.git). Lá você irá encontrar o passo a passo para baixa-lo e executa-lo.
+O componente connector se encontra nesse [repositório](https://github.com/RaphaelOliveiraMoura/teste-ioasys-api-connector). Lá você irá encontrar o passo a passo para baixa-lo e executa-lo.
 
 Por padrão o componente roda no seu localhost, na porta 3333, logo você deve configurar a variável de ambiente `REACT_APP_API_URL` com o valor `http://localhost:3333/api/v1`.
 
