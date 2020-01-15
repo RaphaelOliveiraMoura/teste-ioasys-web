@@ -1,4 +1,4 @@
-# EMPRESAS
+# EMPRESAS WEB
 
 <p align="center">
   <img src="./.github/logo-ioasys-pink.png"/>
@@ -53,7 +53,7 @@ Algumas requisições ocorriam sem problema algum, porém outras retornavam time
 
 **Configurando variáveis de ambiente**
 
-É necessario criar um arquivo chamado `.env` contendo as variáveis necessárias para a execução da aplicação. Para saber quais são estas variáveis, existe um arquivo chamado `.env.example` contendo o exemplo de como o .env deve ser preenchido.
+É necessario criar um arquivo chamado `.env` contendo as variáveis necessárias para a execução da aplicação na raiz do projeto. Para saber quais são estas variáveis, existe um arquivo chamado `.env.example` contendo o exemplo de como o .env deve ser preenchido.
 
 Nesse projeto só foi utilizado a variável `REACT_APP_API_URL` que representa a URL da API que ele irá se comunicar.
 
