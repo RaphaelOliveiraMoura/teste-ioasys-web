@@ -1,46 +1,74 @@
-# README #
+# EMPRESAS
 
-Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto Empresas.
+<p align="center">
+  <img src="./.github/logo-ioasys-pink.png"/>
+</p>
 
-### O QUE FAZER ? ###
+Aplicação desenvolvida como teste de avaliação técnica pela ioasys.
 
-* Você deve fazer um fork deste repositório para o desenvolvimento do teste. Após o desenvolvimento você deve enviar por email um link do seu repositório. Nós iremos avaliar seu projeto e retornar o resultado do seu teste.
+## Introdução 👀
 
-### ESCOPO DO PROJETO ###
+A aplicação consiste em uma interface integrada a uma [API](https://empresas.ioasys.com.br/api/v1) disponibilizada pela a ioasys.
 
-* Login e acesso de Usuário já registrado
-	* Para o login usamos padrões OAuth 2.0. Na resposta de sucesso do login a api retornará 3 custom headers (access-token, client, uid);
-	* Para ter acesso as demais APIS precisamos enviar esses 3 custom headers para a API autorizar a requisição;
-* Listagem de Empresas
-* Detalhamento de Empresas
-* Filtro de Empresas por nome e tipo
+O sistema conta com uma etapa de autenticação construida utilizando a arquitetura **oAuth**, além de fazer a listagem, filtro e detalhamento de empresas.
 
+## API Gateway 🔗
 
-### Informações Importantes ###
+Além da aplicação frontend desenvolvida em **ReactJs**, foi criada um outro componente que funciona como um **Gatewey/Ponte** entre o frontend desenvolvido, e a api da ioasys.
 
-* Layout e recortes disponíveis no Zeplin
-* https://app.zeplin.io/
-* user: teste_web
-* senha: teste_ioasys
+### Motivo de desenvolvimento ❓
 
-* Integração disponível a partir de uma collection para Postman (https://www.getpostman.com/apps) disponível neste repositório. Para utilizar a collection, vá até o postman e import a colllection que está disponível neste repositório, assim você terá acesso as documentação da API.
+Esse novo componente foi construido pois a API disponibilizada pela ioasys tem um bloqueio de **CORS**, impedindo que aplicações web façam requisições diretamente á API, apenas serviços externos como é o exemplo do Postman que foi utilizado como documentação das rotas, ou uma API desenvolvida em NodeJs (que foi a forma que vi de resolver o problema, sem a necessiadade de realizar alguma alteração na API, liberando acesso no CORS).
 
-* É obrigatório utilização do ReactJS.
+Desse modo desenvolvi uma API que recebe requisições para as **mesmas rotas** presentes na documentação do Postman, e apenas repassa essa requisição para a API da ioasys. E nesse componente eu pude configurar o CORS para que aplicações web via browser possam realizar as requisições diretamente.
 
-* É importante criar o layout responsivo, usando boas práticas e organização.
+## Instabilidades na API 🛡️
 
-* Independente de onde conseguiu chegar no teste é importante disponibilizar seu fonte para analisarmos.
+Durante o desenvolvimento do projeto, reparei que ao realizar requisições para a API da ioasys, frequentemente ocorria TIMEOUT, tanto em testes realizados pelo Postman, como pelo componente gateway desenvolvido.
 
-### Dados para Teste ###
+Algumas requisições ocorriam sem problema algum, porém outras retornavam timeout. Logo optei por implementar um módulo/funcionalidade no componente gateway para sempre que recebesse TIMEOUT como resposta da API, ele continuasse persistindo/retentando realizar a requisição novamente. Desse modo a aplicação fica mais estável sem respostas de erros inesperadas. Porém em contraponto ocorre ocasiões da requisição demorar um tempo consideravél para retornar os dados, pelo fato de sempre ficar reenviando a requisição quando recebe TIMEOUT.
 
-* Servidor: http://empresas.ioasys.com.br
-* Versão da API: v1
-* Usuário de Teste: testeapple@ioasys.com.br
-* Senha de Teste : 12341234
+## Executando a aplicação 🚀
 
-### Dicas ###
+### Prerequisitos
 
-* Você pode utilizar um dos frameworks: Bootstrap(http://getbootstrap.com/) ou Materializecss(http://materializecss.com).
-* No postman existem alguns parâmetros no header que devem ser passados em todas requests exceto na de login, eles serão retornados no endpoint de login, nos headers da request.
-* Sobrou tempo? Testes unitários, integração e e2e no sistema são bem vindos.
+- NodeJs
+- Algum gerenciador de pacotes (yarn ou npm)
 
+### Instalando e executando
+
+**Clonando o projeto**
+
+```
+  ~ git clone https://github.com/RaphaelOliveiraMoura/teste-ioasys-web.git
+```
+
+**Instalando dependências**
+
+```
+  ~/project_folder yarn install
+  or
+  ~/project_folder npm install
+```
+
+**Configurando variáveis de ambiente**
+
+É necessario criar um arquivo chamado `.env` contendo as variáveis necessárias para a execução da aplicação. Para saber quais são estas variáveis, existe um arquivo chamado `.env.example` contendo o exemplo de como o .env deve ser preenchido.
+
+Nesse projeto só foi utilizado a variável `REACT_APP_API_URL` que representa a URL da API que ele irá se comunicar.
+
+Para essa variável pode-se colocar diretamente a URL da API da ioasys (https://empresas.ioasys.com.br/api/v1) porém é recomendado utilizar a URL do **componente gateway**.
+
+### Executando o API Gateway
+
+O componente gateway se encontra nesse [repositório](https://github.com/RaphaelOliveiraMoura/teste-ioasys-api-gatwey.git). Lá você irá encontrar o passo a passo para baixa-lo e executa-lo.
+
+Por padrão o componente roda no seu localhost, na porta 3333, logo você deve configurar a variável de ambiente `REACT_APP_API_URL` com o valor `http://localhost:3333/api/v1`.
+
+**Executando projeto** (em modo de desenvolvimento)
+
+```
+  ~/project_folder yarn start
+  or
+  ~/project_folder npm start
+```
