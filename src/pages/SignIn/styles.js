@@ -11,7 +11,6 @@ export const Container = styled.div`
   background: #ef5781;
 
   .card {
-    max-width: 450px;
     background: #fff;
     border: 1px solid #ddd;
     padding: 26px;
@@ -23,6 +22,7 @@ export const Container = styled.div`
 
     h1 {
       margin-top: 46px;
+      text-align: center;
     }
 
     p {
@@ -52,6 +52,14 @@ export const Container = styled.div`
         &:hover {
           background: ${darken(0.03, '#ef5781')};
         }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    & {
+      .card {
+        border-radius: 0px;
       }
     }
   }

@@ -69,14 +69,10 @@ export const Container = styled.div`
       .header-container {
         justify-content: start;
 
-        svg:first-of-type {
-          display: none;
-        }
-
         img {
           width: 120px;
           float: left;
-          clip-path: polygon(0 0, 33% 0, 33% 100%, 0% 100%);
+          display: none;
         }
 
         input {
