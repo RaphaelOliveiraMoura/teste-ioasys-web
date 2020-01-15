@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiUnlock, FiMail } from 'react-icons/fi';
 
@@ -9,7 +9,7 @@ import { Container } from './styles';
 
 import logoIoasys from '~/assets/logo-ioasys-pink.png';
 
-import { singInRequest } from '~/store/modules/auth/actions';
+import { singInRequest, unsetLoading } from '~/store/modules/auth/actions';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -18,6 +18,10 @@ export default function SignIn() {
   const loading = useSelector(state => state.auth.loading);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(unsetLoading());
+  }, [dispatch]);
 
   async function handleSubmit(e) {
     e.preventDefault();

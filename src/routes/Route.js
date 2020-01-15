@@ -12,7 +12,7 @@ function RouteWrapper({ component: Component, isPrivate = false, ...rest }) {
   }
 
   if (signed && !isPrivate) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/enterprises" />;
   }
 
   return <Route render={props => <Component {...props} />} {...rest} />;

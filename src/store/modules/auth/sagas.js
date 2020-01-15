@@ -38,7 +38,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(oAuth, investor));
 
-    history.push('/home');
+    history.push('/enterprises');
   } catch (error) {
     toast.error('Credenciais inválidas, verifique seus dados!');
     yield put(signInFailure());

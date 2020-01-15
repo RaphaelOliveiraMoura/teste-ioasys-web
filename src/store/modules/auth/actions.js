@@ -23,3 +23,9 @@ export function singOut() {
     type: '@auth/SIGN_OUT',
   };
 }
+
+export function unsetLoading() {
+  return {
+    type: '@auth/UNSET_LOADING',
+  };
+}

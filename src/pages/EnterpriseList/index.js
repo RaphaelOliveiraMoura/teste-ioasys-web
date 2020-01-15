@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -13,8 +15,9 @@ import logoEnterprise from '~/assets/logo-enterprise.png';
 import { singOut } from '~/store/modules/auth/actions';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
-export default function Home() {
+export default function EnterpriseList() {
   const [enterprises, setEnterprises] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -56,7 +59,11 @@ export default function Home() {
           </div>
         )}
         {enterprises.map(enterprise => (
-          <div className="card" key={enterprise.id}>
+          <div
+            className="card"
+            key={enterprise.id}
+            onClick={() => history.push(`enterprises/${enterprise.id}`)}
+          >
             <div className="logo">
               <img src={logoEnterprise} alt={enterprise.enterprise_name} />
             </div>

@@ -4,14 +4,16 @@ import { Switch } from 'react-router-dom';
 import Route from './Route';
 
 import SignIn from '~/pages/SignIn';
-import Home from '~/pages/Home';
+import EnterpriseList from '~/pages/EnterpriseList';
+import EnterpriseInfo from '~/pages/EnterpriseInfo';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
 
-      <Route path="/home" component={Home} isPrivate />
+      <Route path="/enterprises" exact component={EnterpriseList} isPrivate />
+      <Route path="/enterprises/:id" component={EnterpriseInfo} isPrivate />
     </Switch>
   );
 }
