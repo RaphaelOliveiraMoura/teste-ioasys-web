@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   oAuth: null,
   signed: false,
   loading: false,
