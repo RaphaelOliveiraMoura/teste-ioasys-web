@@ -19,10 +19,12 @@ export default function InputComponent({
   const [hasText, setHasText] = useState(false);
 
   useEffect(() => {
-    ref.current.addEventListener('invalid', e => {
-      e.preventDefault();
-      setShowError(true);
-    });
+    if (ref.current) {
+      ref.current.addEventListener('invalid', e => {
+        e.preventDefault();
+        setShowError(true);
+      });
+    }
   }, []);
 
   function handleChange(e) {
