@@ -32,6 +32,7 @@ Algumas requisições ocorriam sem problema algum, porém outras retornavam time
 
 - NodeJs
 - Algum gerenciador de pacotes (yarn ou npm)
+- Componente connector executando
 
 ### Instalando e executando
 
