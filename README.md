@@ -72,3 +72,17 @@ Por padrão o componente roda no seu localhost, na porta 3333, logo você deve c
   or
   ~/project_folder npm start
 ```
+
+## Executando os testes 🔧
+
+Para executar os testes com o modo watch ativado (aconselhado para desenvolvimento), execute o comando:
+
+```
+  ~/project_folder yarn test
+```
+
+Para executar com o modo de **coverage** (detalhando quais partes do código foram e não foram testadas), execute o comando:
+
+```
+  ~/project_folder yarn coverage
+```
