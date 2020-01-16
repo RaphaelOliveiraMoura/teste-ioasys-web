@@ -40,7 +40,12 @@ export function* signIn({ payload }) {
 
     history.push('/enterprises');
   } catch (error) {
-    toast.error('Credenciais inválidas, verifique seus dados!');
+    if (error.response && error.response.status === 401) {
+      toast.error('Credenciais inválidas, verifique seus dados!');
+    } else {
+      toast.error('Erro ao comunicar com o servidor!');
+    }
+
     yield put(signInFailure());
   }
 }
