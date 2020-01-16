@@ -29,9 +29,11 @@ export default function EnterpriseList() {
   const loadEnterprises = useCallback(async () => {
     try {
       setLoading(true);
+
       const response = await api.get('/enterprises', {
         params: { name: filter },
       });
+
       setEnterprises(response.data.enterprises);
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -63,6 +65,7 @@ export default function EnterpriseList() {
             className="card"
             key={enterprise.id}
             onClick={() => history.push(`enterprises/${enterprise.id}`)}
+            data-testid="enterprise-card"
           >
             <div className="logo">
               <img src={logoEnterprise} alt={enterprise.enterprise_name} />
