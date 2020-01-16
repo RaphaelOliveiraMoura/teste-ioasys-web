@@ -30,7 +30,7 @@ export default function Header({ filter, setFilter, reversable }) {
   }
 
   function handleClickIcon() {
-    if (!showInput) {
+    if (!showInput && inputRef.current) {
       inputRef.current.focus();
     }
     setShowInput(!showInput);
@@ -50,7 +50,12 @@ export default function Header({ filter, setFilter, reversable }) {
             onClick={() => history.push('/enterprises')}
           />
         ) : (
-          <FiSearch size={25} color="#fff" onClick={handleClickIcon} />
+          <FiSearch
+            size={25}
+            color="#fff"
+            onClick={handleClickIcon}
+            data-testid="search-icon"
+          />
         )}
 
         <input
@@ -60,6 +65,7 @@ export default function Header({ filter, setFilter, reversable }) {
           value={filter}
           onChange={e => setFilter(e.target.value)}
           ref={inputRef}
+          data-testid="search-input"
         />
       </div>
     </Container>
