@@ -1,8 +1,6 @@
 # EMPRESAS WEB
 
-<p align="center">
-  <img src="./.github/logo-ioasys-pink.png"/>
-</p>
+![alt](./.github/logo-ioasys-pink.png)
 
 Aplicação desenvolvida como teste de avaliação técnica pela ioasys.
 
@@ -41,6 +39,8 @@ Algumas requisições ocorriam sem problema algum, porém outras retornavam time
 
 ```
   ~ git clone https://github.com/RaphaelOliveiraMoura/teste-ioasys-web.git
+  or
+  ~ git clone https://bitbucket.org/RaphaelOliveiraMoura/empresas-web.git
 ```
 
 **Instalando dependências**
@@ -61,7 +61,7 @@ Em teoria, essa variável iria conter a URL da API da ioasys (https://empresas.i
 
 ### Executando o API Connector
 
-O componente connector se encontra nesse [repositório](https://github.com/RaphaelOliveiraMoura/teste-ioasys-api-connector). Lá você irá encontrar o passo a passo para baixa-lo e executa-lo.
+O componente connector se encontra nesse repositório do [github](https://github.com/RaphaelOliveiraMoura/teste-ioasys-api-connector) ou do [bitbucket](https://bitbucket.org/RaphaelOliveiraMoura/empresas-connector.git). Lá você irá encontrar o passo a passo para baixa-lo e executa-lo.
 
 Por padrão o componente roda no seu localhost, na porta 3333, logo você deve configurar a variável de ambiente `REACT_APP_API_URL` com o valor `http://localhost:3333/api/v1`.
 
